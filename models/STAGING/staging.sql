@@ -1,10 +1,11 @@
 select 
-order_id,order_date, order_status, order_customer_id,
+cast(order_id as string) as order_id,order_date, order_status,
 oi.order_item_product_id,oi.order_item_product_price,
 oi.order_item_quantity,{{ revenue('oi.order_item_quantity','oi.order_item_product_price',)}} as revenue,
-p.product_name
+p.product_name,cast(p.product_id as string) as product_id
 ,c.customer_city,c.customer_lname,c.customer_fname,
-c.customer_state,c.customer_street,c.customer_zipcode,c.customer_id
+c.customer_state,
+cast(c.customer_id as string) as customer_id
 
 
 from {{ ref('orders') }} as o
