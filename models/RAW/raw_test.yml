@@ -25,6 +25,12 @@ models:
         tests:
           - unique
           - not_null
+  - name: categroy
+    columns:
+      - name: CATEGORY_ID
+        tests:
+          - unique
+          - not_null
 
     
           
